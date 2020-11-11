@@ -8,7 +8,7 @@
 
 #     (2..biggest).each do |num|
 #         if num1 % num == 0 && num2 % num == 0
-#            return false 
+#            return false
 #         end
 #     end
 

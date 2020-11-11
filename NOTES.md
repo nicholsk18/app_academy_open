@@ -20,3 +20,17 @@ gem install pry # main pry gem
 ```
 gem install pry-doc # view ruby doc in pry
 ```
+
+### install byebug
+```
+gem install byebug
+```
+
+before running the file add
+```ruby
+require "byebug"
+```
+place this line where you need to debug
+```ruby
+debugger
+```
