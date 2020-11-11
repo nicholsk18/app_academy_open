@@ -3,8 +3,7 @@
 
 def max_inject(*arr)
     arr.inject { |acc, curr| acc > curr ? acc : curr }
-  end
-  
-  p max_inject(1, -4, 0, 7, 5)  # => 7
-  p max_inject(30, 28, 18)      # => 30
-  
+end
+
+p max_inject(1, -4, 0, 7, 5)  # => 7
+p max_inject(30, 28, 18)      # => 30

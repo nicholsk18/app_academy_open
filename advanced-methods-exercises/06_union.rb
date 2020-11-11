@@ -3,8 +3,7 @@
 
 def union(*arr)
     arr.flatten
-  end
-  
-  p union(["a", "b"], [1, 2, 3]) # => ["a", "b", 1, 2, 3]
-  p union(["x", "y"], [true, false], [20, 21, 23]) # => ["x", "y", true, false, 20, 21, 23]
-  
+end
+
+p union(["a", "b"], [1, 2, 3]) # => ["a", "b", 1, 2, 3]
+p union(["x", "y"], [true, false], [20, 21, 23]) # => ["x", "y", true, false, 20, 21, 23]

@@ -7,12 +7,9 @@ def only_vowels?(str)
     vowel = "aeiou"
     word_arr = str.split("")
     word_arr.all? { |char| vowel.include?(char) }
-  end
-  
-  p only_vowels?("aaoeee")  # => true
-  p only_vowels?("iou")     # => true
-  p only_vowels?("cat")     # => false
-  p only_vowels?("over")    # => false
-  
-  
-  
+end
+
+p only_vowels?("aaoeee")  # => true
+p only_vowels?("iou")     # => true
+p only_vowels?("cat")     # => false
+p only_vowels?("over")    # => false
