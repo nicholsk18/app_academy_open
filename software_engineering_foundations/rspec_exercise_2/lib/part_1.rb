@@ -63,5 +63,3 @@ def power_of_two?(num)
 
   return false
 end
-
-p 2.pow(1)
