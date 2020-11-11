@@ -12,3 +12,11 @@ bundle install
 ```
 bundle exec rspec
 ```
+
+### install Pry
+```
+gem install pry # main pry gem
+```
+```
+gem install pry-doc # view ruby doc in pry
+```
