@@ -11,7 +11,20 @@
 
 
 def my_rotate!(array, amt)
-
+    count = 0
+    if amt > 0 
+      while count < amt
+        array << array.shift
+        count += 1
+      end
+    else
+      while count > amt
+        array.unshift(array.pop)
+        count -= 1
+      end
+    end
+  
+    array
 end
 
 
@@ -20,6 +33,8 @@ p array_1.object_id                 # => 70354216023780
 result_1 = my_rotate!(array_1, 2)
 p result_1                          # => ["c", "d", "a", "b"]
 p result_1.object_id                # => 70354216023780
+
+p array_1.object_id == result_1.object_id
 
 
 array_2 = ["NOMAD", "SOHO", "TRIBECA"]
