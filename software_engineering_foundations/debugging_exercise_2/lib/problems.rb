@@ -27,7 +27,7 @@ def unique_chars?(string)
 end
 
 def dupe_indices(array)
-  hash = Hash.new([])
+  hash = Hash.new { |h, k| h[k] = [] }
   array.each.with_index do |char, i|
     if array.count(char) > 1
       hash[char] += [i]
