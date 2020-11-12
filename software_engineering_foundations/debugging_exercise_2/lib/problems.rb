@@ -13,13 +13,7 @@ end
 def prime?(num)
   return false if num < 2
 
-  (2...num).each do |factor|
-    if num % factor == 0
-      return false
-    end
-  end
-
-  return true
+  (2...num).none? { |i| num % i == 0}
 end
 
 def unique_chars?(string)
