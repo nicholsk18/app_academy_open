@@ -1,11 +1,19 @@
-def all_words_capitalized?(array)
-  array.all? { |word| word == word.capitalize}
+def all_words_capitalized?(words)
+  words.all? { |word| word == word.capitalize}
 end
 
-def no_valid_url?(array)
+def no_valid_url?(urls)
+  # this is the way they did it in the course
+  # keep for educational purpose
+  #
+  # valid_endings = [".com", ".net", ".io", ".org"]
+  # urls.none? do |url|
+  #   valid_endings.any? { |ending| url.end_with?(ending) }
+  # end
+
   tld = [".com", ".net", ".io", ".org"]
   tld.each do |ending|
-    return array.none? { |word| word.end_with?(ending)}
+    return urls.none? { |url| url.end_with?(ending)}
   end
 end
 
