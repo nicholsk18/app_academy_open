@@ -58,4 +58,20 @@ class Array
 
     uniq
   end
+
+  def my_transpose
+    transpose = []
+
+    (0...self.length).each do |row|
+      temp = []
+
+      (0...self.length).each do |col|
+        temp << self[col][row]
+      end
+
+      transpose << temp
+    end
+
+    transpose
+  end
 end
