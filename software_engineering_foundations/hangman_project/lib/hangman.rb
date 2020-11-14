@@ -31,8 +31,8 @@ class Hangman
   def get_matching_indices(char)
     indices = []
 
-    @secret_word.split("").each.with_index do |ele, index|
-      if ele == char
+    @secret_word.split("").each.with_index do |secret_char, index|
+      if secret_char == char
         indices << index
       end
     end
@@ -50,11 +50,48 @@ class Hangman
       return false
     end
 
-    # @attempted_chars << char
-    # if !(@secret_word.split("").include(char))
-    #   @remaining_incorrect_guesses -= 1 
-    # end
 
-    # true
+    @attempted_chars << char
+    
+    if self.get_matching_indices(char) == []
+      @remaining_incorrect_guesses -= 1
+    end
+
+    self.fill_indices(char, self.get_matching_indices(char))
+    return true
+  end
+
+  def ask_user_for_guess
+    p "Enter a char:"
+    user_guess = gets.chomp
+    
+    self.try_guess(user_guess)
+  end
+
+  def win?
+    if @guess_word == @secret_word.split("")
+      p "WIN"
+      return true
+    end
+
+    false
+  end
+
+  def lose?
+    if @remaining_incorrect_guesses == 0
+      p "LOSE"
+      return true
+    end
+
+    false
+  end
+
+  def game_over?
+    if self.win? || self.lose?
+      p @secret_word
+      return true
+    end
+
+    false
   end
 end
