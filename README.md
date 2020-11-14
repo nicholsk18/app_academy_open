@@ -31,4 +31,5 @@ In this section I learned:
 - Object Oriented Programming
 - Recursion
 
-## During this section I build these projects:
+### Section Projects:
+On top of all the exercises I also build these projects to put my learning in to practice
