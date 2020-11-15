@@ -29,19 +29,19 @@ class Hangman
   end
 
   def get_matching_indices(char)
-    indices = []
+    matching_indices = []
 
-    @secret_word.split("").each.with_index do |secret_char, index|
+    @secret_word.each_char.with_index do |secret_char, index|
       if secret_char == char
-        indices << index
+        matching_indices << index
       end
     end
 
-    indices
+    matching_indices
   end
 
-  def fill_indices(char, array)
-    array.each { |index| @guess_word[index] = char }
+  def fill_indices(char, indices)
+    indices.each { |index| @guess_word[index] = char }
   end
 
   def try_guess(char)
@@ -50,15 +50,14 @@ class Hangman
       return false
     end
 
-
     @attempted_chars << char
+    self.fill_indices(char, self.get_matching_indices(char))
     
-    if self.get_matching_indices(char) == []
+    if self.get_matching_indices(char).empty?
       @remaining_incorrect_guesses -= 1
     end
 
-    self.fill_indices(char, self.get_matching_indices(char))
-    return true
+    true
   end
 
   def ask_user_for_guess
