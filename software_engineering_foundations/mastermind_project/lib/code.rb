@@ -38,4 +38,34 @@ class Code
     @pegs.length
   end
 
+  def num_exact_matches(guess)
+    counter = 0
+
+    guess.pegs.each.with_index do |peg, index|
+      if peg == @pegs[index]
+        counter += 1
+      end
+    end
+
+    counter
+  end
+
+  def num_near_matches(guess)
+    counter = 0
+
+    guess.pegs.each.with_index do |peg, index|
+      if @pegs.include?(peg) && peg != @pegs[index]
+        counter += 1
+      end
+    end
+
+    counter
+  end
+
+  def ==(new_peg)
+    return false if self.pegs.length != new_peg.pegs.length
+
+    self.pegs == new_peg.pegs
+  end
+
 end
