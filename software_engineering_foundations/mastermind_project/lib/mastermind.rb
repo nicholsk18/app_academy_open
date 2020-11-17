@@ -6,18 +6,16 @@ class Mastermind
   end
 
   def print_matches(code)
-    puts @secret_code.num_exact_matches(code)
-    puts @secret_code.num_near_matches(code)
+    puts "Exact Matches #{@secret_code.num_exact_matches(code)}"
+    puts "Near Matches #{@secret_code.num_near_matches(code)}"
   end
 
   def ask_user_for_guess
     puts "Enter a code"
-    user_guess = gets.chomp
-    user_code = Code::from_string(user_guess)
+    user_guess = Code::from_string(gets.chomp)
 
-    self.print_matches(@secret_code)
-    self.print_matches(user_code)
+    self.print_matches(user_guess)
 
-    @secret_code == user_code
+    @secret_code == user_guess
   end
 end
