@@ -27,4 +27,52 @@ class Board
 
     counter
   end
+
+  def attack(position)
+    if self[position] == :S
+      self[position] = :H
+      puts "you sunk my battleship!"
+      return true
+    else
+      self[position] = :X
+      return false
+    end
+  end
+
+  def place_random_ships
+    amount_will_place = @size * 0.25
+
+    while self.num_ships < amount_will_place
+      random_row = rand(0...@grid.length)
+      random_column = rand(0...@grid.length)
+      position = [random_row, random_column]
+      self[position] = :S
+    end
+  end
+
+  def hidden_ships_grid
+    @grid.map do |row|
+      row.map do |col|
+        if col == :S
+          col = :N
+        else
+          col
+        end
+      end
+    end
+  end
+
+  def self.print_grid(grid)
+    grid.each do |row|
+      print row.join(" ") + "\n"
+    end
+  end
+
+  def cheat
+    Board::print_grid(@grid)
+  end
+
+  def print
+    Board::print_grid(self.hidden_ships_grid)
+  end
 end
