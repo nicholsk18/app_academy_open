@@ -2,30 +2,24 @@ class Board
   attr_reader :size
 
   def initialize(grid_size)
-    @grid = Array.new(grid_size) {Array.new(grid_size) {:N}}
+    @grid = Array.new(grid_size) { Array.new(grid_size) {:N} }
     @size = grid_size * grid_size
   end
 
-  def [](indices)
-    @grid[indices[0]][indices[1]]
+  def [](position)
+    # destruct position array
+    row, col = position
+    @grid[row][col]
   end
 
   def []=(position, value)
-    @grid[position[0]][position[1]] = value
+    # destruct position array
+    row, col = position
+    @grid[row][col] = value
   end
 
   def num_ships
-    counter = 0
-
-    @grid.each do |row|
-      row.each do |column|
-        if column == :S
-          counter += 1
-        end
-      end
-    end
-
-    counter
+    @grid.flatten.count { |ele| ele == :S }
   end
 
   def attack(position)
@@ -54,7 +48,7 @@ class Board
     @grid.map do |row|
       row.map do |col|
         if col == :S
-          col = :N
+          :N
         else
           col
         end
@@ -64,7 +58,7 @@ class Board
 
   def self.print_grid(grid)
     grid.each do |row|
-      print row.join(" ") + "\n"
+      puts row.join(" ")
     end
   end
 
