@@ -6,7 +6,13 @@
 #
 # all_vowel_pairs(["goat", "action", "tear", "impromptu", "tired", "europe"])   # => ["action europe", "tear impromptu"]
 def all_vowel_pairs(words)
+    vowels = "aeiou"
 
+    words.each.with_index do |word, index|
+        (index+1...words.length).each do |i|
+            word + words[i].include? { |ele| puts ele}
+        end
+    end
 end
 
 
