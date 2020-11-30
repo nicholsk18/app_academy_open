@@ -6,9 +6,9 @@ describe "no_dupes?" do
     end
 
     it "should return a new array containing the elements that were not repeated" do
-        expect(partition([1, 1, 2, 1, 3, 2, 4])).to eq([3, 4])
-        expect(['x', 'x', 'y', 'z', 'z']).to eq(['y'])
-        expect([true, true, true]).to eq([])
+        expect(no_dupes?([1, 1, 2, 1, 3, 2, 4])).to eq([3, 4])
+        expect(no_dupes?(['x', 'x', 'y', 'z', 'z'])).to eq(['y'])
+        expect(no_dupes?([true, true, true])).to eq([])
     end
 
 end
