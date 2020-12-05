@@ -35,12 +35,40 @@ def longest_streak(str)
   longest[0] * longest[1]
 end
 
-def bi_prime?(num)
+def prime?(num)
+  return false if num < 2
 
+  (2...num).none? { |i| num % i == 0}
+end
+
+def bi_prime?(num)
+ count = 0
+
+ (1..num).each do |index|
+  if (num % index == 0)
+    if (prime?(index) && prime?(num / index))
+      return true
+    end
+  end
+ end
+
+ false
 end
 
 def vigenere_cipher(message, key)
+  char_arr = []
 
+  message.each_byte.with_index do |char, i|
+
+    if char > 96 && char < 123
+      index = (char - 97) + key[i % key.length]
+      char_arr << (index % 26 + 97).chr
+    else
+      char_arr << char.chr
+    end
+  end
+
+  char_arr.join("")
 end
 
 def vowel_rotate(str)
