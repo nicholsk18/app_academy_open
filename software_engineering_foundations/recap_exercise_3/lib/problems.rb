@@ -90,7 +90,16 @@ end
 
 class String
   def select(&prc)
+    prc = prc || Proc.new { |char| false }
+    str = ""
 
+    self.each_char do |char|
+      if (prc.call(char))
+        str += char
+      end
+    end
+
+    str
   end
 
   def map!(&prc)

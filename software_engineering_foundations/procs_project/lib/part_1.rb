@@ -38,5 +38,4 @@ def my_none?(array, &prc)
     array.each { |ele| return false if prc.call(ele) }
 
     true
-
 end
