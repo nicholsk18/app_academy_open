@@ -103,7 +103,11 @@ class String
   end
 
   def map!(&prc)
+    (0...self.length).each do |i|
+      self[i] = prc.call(self[i], i)
+    end
 
+    self
   end
 end
 
