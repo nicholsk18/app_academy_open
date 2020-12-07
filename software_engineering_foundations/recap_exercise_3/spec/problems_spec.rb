@@ -83,7 +83,7 @@ end
 
 describe "vowel_rotate" do
   it "should accept a string as an arg" do
-    expect { vowel_rotate }.to_not raise_error
+    expect { vowel_rotate('computer') }.to_not raise_error
   end
 
   it "should return a string where every vowel is replaced with the vowel tha appears vefore it sequentially" do

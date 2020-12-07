@@ -42,7 +42,6 @@ def prime?(num)
 end
 
 def bi_prime?(num)
- count = 0
 
  (1..num).each do |index|
   if (num % index == 0)
@@ -72,7 +71,21 @@ def vigenere_cipher(message, key)
 end
 
 def vowel_rotate(str)
+  vowels = 'aeiou'
+  str = str.reverse
 
+  str.each_char.with_index do |char, index|
+    if (vowels.include?(char))
+      (index+1...str.length).each do |j|
+        if (vowels.include?(str[j]))
+          str[index], str[j] = str[j], str[index]
+          break
+        end
+      end
+    end
+  end
+
+  str.reverse
 end
 
 class String
