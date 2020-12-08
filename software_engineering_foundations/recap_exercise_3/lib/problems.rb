@@ -112,14 +112,35 @@ class String
 end
 
 def multiply(a, b)
-
+  return 0 if ( b == 0)
+  if (b < 0)
+    -(a + multiply(a, (-b) - 1))
+  else
+    a + multiply(a, b - 1)
+  end
 end
 
 def lucas_sequence(num)
+  return [] if (num == 0)
+  return [2] if (num == 1)
+  return [2, 1] if (num == 2)
 
+  seq = lucas_sequence(num - 1)
+  next_ele = seq[-1] + seq[-2]
+  seq << next_ele
+  seq
 end
 
 def prime_factorization(num)
+  (2...num).each do |fact|
+    if num % fact == 0
+      other_fact = num / fact
+      return [*prime_factorization(fact), *prime_factorization(other_fact)]
+    end
+  end
 
+  [ num ]
 end
+
+p prime_factorization(12)
 
