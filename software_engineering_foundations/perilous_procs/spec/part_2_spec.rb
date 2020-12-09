@@ -20,7 +20,7 @@ describe "PHASE 2" do
   end
 
   describe "filter_out!" do
-    it "should accept an array" do
+    it "should accept an array and a block" do
       expect { filter_out!([10, 6, 3, 2, 5 ]) { |x| x.odd? } }.to_not raise_error
     end
 
