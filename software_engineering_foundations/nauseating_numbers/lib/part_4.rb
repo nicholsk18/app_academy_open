@@ -11,5 +11,5 @@ def consecutive_collapse(array)
 end
 
 def pretentious_primes(array, number)
-  
+
 end
