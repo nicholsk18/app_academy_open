@@ -58,20 +58,20 @@ describe "PHASE 1" do
 
     context "When the argument is a perfect square" do
       it "should return true" do
-        expect(perfect_square(1)).to eq(true)
-        expect(perfect_square(4)).to eq(true)
-        expect(perfect_square(64)).to eq(true)
-        expect(perfect_square(100)).to eq(true)
-        expect(perfect_square(169)).to eq(true)
+        expect(perfect_square?(1)).to eq(true)
+        expect(perfect_square?(4)).to eq(true)
+        expect(perfect_square?(64)).to eq(true)
+        expect(perfect_square?(100)).to eq(true)
+        expect(perfect_square?(169)).to eq(true)
       end
     end
 
     context "when the argument is not a perfect square" do
       it "should return false" do
-        expect(perfect_square(2)).to eq(false)
-        expect(perfect_square(40)).to eq(false)
-        expect(perfect_square(32)).to eq(false)
-        expect(perfect_square(50)).to eq(false)
+        expect(perfect_square?(2)).to eq(false)
+        expect(perfect_square?(40)).to eq(false)
+        expect(perfect_square?(32)).to eq(false)
+        expect(perfect_square?(50)).to eq(false)
       end
     end
   end
