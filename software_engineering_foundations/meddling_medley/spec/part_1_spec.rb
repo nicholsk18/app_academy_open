@@ -102,7 +102,7 @@ describe "PHASE 1" do
 
     describe "uncompress" do
         it "should accept a string as an argument" do
-            expect {}.to_not raise_error
+            expect { uncompress('a2b4c1') }.to_not raise_error
         end
 
         it " should return an "uncompressed" version of the string where every letter is repeated multiple times given based on the number that appears directly after the letter." do
