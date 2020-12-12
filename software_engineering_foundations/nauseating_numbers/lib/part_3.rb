@@ -25,9 +25,44 @@ def squarocol?(arrays)
 end
 
 def squaragonal?(arrays)
+  # Better way
+  # return true if grid.any? { |row| row.uniq.length == 1 }
+  # return true if grid.transpose.any? { |col| col.uniq.length == 1 }
+  # false
+  
+  left_to_right = []
+  right_to_left = []
 
+  (0...arrays.length).each do |index|
+    left_to_right << arrays[index][index]
+    right_to_left << arrays[index][-1 * (index+ 1)]
+  end
+
+  if (left_to_right.uniq.length == 1 || right_to_left.uniq.length == 1)
+    true
+  else
+    false
+  end
+end
+
+def adjacent_sums(arr)
+  sums = []
+  (0...arr.length-1).each do |i|
+      sums << arr[i] + arr[i + 1]
+  end
+  sums
 end
 
 def pascals_triangle(number)
+  triangle = [[1]]
 
+  while triangle.length < number
+      level_above = triangle.last
+      next_level = [1]
+      next_level += adjacent_sums(level_above)
+      next_level << 1
+      triangle << next_level
+  end
+
+  triangle
 end
