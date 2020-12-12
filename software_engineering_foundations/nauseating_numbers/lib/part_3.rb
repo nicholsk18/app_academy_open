@@ -10,8 +10,18 @@ def matrix_addition_reloaded(*matrices)
   end
 end
 
-def squarocol?(array)
+def squarocol?(arrays)
+  (0...arrays.length).each do |i|
+    return true if arrays[i].uniq.length == 1
+    temp = []
+    (0...arrays.length).each do |j|
+      temp << arrays[j][i]
+    end
+    
+    return true if temp.uniq.length == 1
+  end
 
+  false
 end
 
 def squaragonal?(array)
