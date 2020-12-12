@@ -24,7 +24,7 @@ def squarocol?(arrays)
   false
 end
 
-def squaragonal?(array)
+def squaragonal?(arrays)
 
 end
 
