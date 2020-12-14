@@ -11,6 +11,11 @@ def matrix_addition_reloaded(*matrices)
 end
 
 def squarocol?(arrays)
+  # Better way
+  # return true if grid.any? { |row| row.uniq.length == 1 }
+  # return true if grid.transpose.any? { |col| col.uniq.length == 1 }
+  # false
+
   (0...arrays.length).each do |i|
     return true if arrays[i].uniq.length == 1
     temp = []
@@ -25,11 +30,6 @@ def squarocol?(arrays)
 end
 
 def squaragonal?(arrays)
-  # Better way
-  # return true if grid.any? { |row| row.uniq.length == 1 }
-  # return true if grid.transpose.any? { |col| col.uniq.length == 1 }
-  # false
-  
   left_to_right = []
   right_to_left = []
 
