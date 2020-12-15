@@ -27,19 +27,19 @@ describe "PHASE 2" do
     it "should remove elements of the input array that return true in the block" do
       arr_1 = [10, 6, 3, 2, 5 ]
       filter_out!(arr_1) { |x| x.odd? }
-      expect(arr_1).to be([10, 6, 2])
+      expect(arr_1).to eq([10, 6, 2])
 
       arr_2 = [1, 7, 3, 5 ]
       filter_out!(arr_2) { |x| x.odd? }
-      expect(arr_2).to be([])
+      expect(arr_2).to eq([])
 
       arr_3 = [10, 6, 3, 2, 5 ]
       filter_out!(arr_3) { |x| x.even? }
-      expect(arr_3).to be([3, 5])
+      expect(arr_3).to eq([3, 5])
 
       arr_4 = [1, 7, 3, 5 ]
       filter_out!([1, 7, 3, 5 ]) { |x| x.even? }
-      expect(arr_4).to be([1, 7, 3, 5])
+      expect(arr_4).to eq([1, 7, 3, 5])
     end
 
     it "should not use Array#reject!" do
