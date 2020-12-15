@@ -94,11 +94,11 @@ describe "PHASE 1" do
       end
     end
 
-    context "when none of the elements in the block match the number (n)" do
+    context "when less than the number of the elements in the block match the number (n)" do
       it "should return false" do
+        expect(at_least?(['sad', 'quick', 'timid', 'final'], 1) { |s| s.end_with?('ly') }).to eq(false)
         expect(at_least?(['sad', 'quick', 'timid', 'final'], 2) { |s| s.end_with?('ly') }).to eq(false)
         expect(at_least?(['sad', 'quickly', 'timid', 'final'], 2) { |s| s.end_with?('ly') }).to eq(false)
-        expect(at_least?(['sad', 'quick', 'timid', 'final'], 1) { |s| s.end_with?('ly') }).to eq(false)
         expect(at_least?([false, false, false], 3) { |bool| bool }).to eq(false)
         expect(at_least?([false, true, true], 3) { |bool| bool }).to eq(false)
       end
