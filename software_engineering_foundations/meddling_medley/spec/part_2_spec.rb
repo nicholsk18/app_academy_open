@@ -106,7 +106,7 @@ describe "PHASE 2" do
             expect {}.to_not raise_error
         end
 
-        it "should return a "compressed" version of the string where streaks of consecutive letters are translated to a single appearance of the letter followed by the number of times it appears in the streak." do
+        it "should return a compressed version of the string where streaks of consecutive letters are translated to a single appearance of the letter followed by the number of times it appears in the streak." do
             expect(compress('aabbbbc')).to eq("a2b4c")
             expect(compress('boot')).to eq("bo2t")
             expect(compress('xxxyxxzzzz')).to eq("x3yx2z4")

@@ -37,6 +37,7 @@ describe "PHASE 1" do
 
     describe "hash_mapped" do
         it "should accept a hash, a pr0c and a block" do
+            double = Proc.new { |n| n * 2 }
             expect { hash_mapped({'a'=>4, 'x'=>7, 'c'=>-3}, double) { |k| k.upcase + '!!' } }.to_not raise_error
         end
 
@@ -105,7 +106,7 @@ describe "PHASE 1" do
             expect { uncompress('a2b4c1') }.to_not raise_error
         end
 
-        it " should return an "uncompressed" version of the string where every letter is repeated multiple times given based on the number that appears directly after the letter." do
+        it "should return an uncompressed version of the string where every letter is repeated multiple times given based on the number that appears directly after the letter." do
             expect(uncompress('a2b4c1')).to eq('aabbbbc')
             expect(uncompress('b1o2t1')).to eq('boot')
             expect(uncompress('x3y1x2z4')).to eq('xxxyxxzzzz')
