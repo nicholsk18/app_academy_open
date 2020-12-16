@@ -17,15 +17,15 @@ describe "PHASE 3" do
 
       arr_1 = [8, 5, 10, 4]
       selected_map!(arr_1, is_even, square)
-      expect(arr_1).to be([64, 5, 100, 16])
+      expect(arr_1).to eq([64, 5, 100, 16])
 
       arr_2 = [-10, 4, 7, 6, -2, -9]
       selected_map!(arr_2, is_even, flip_sign)
-      expect(arr_2).to be([10, -4, 7, -6, 2, -9])
+      expect(arr_2).to eq([10, -4, 7, -6, 2, -9])
 
       arr_3 = [-10, 4, 7, 6, -2, -9]
       selected_map!(arr_3, is_positive, square)
-      expect(arr_3).to be([-10, 16, 49, 36, -2, -9])
+      expect(arr_3).to eq([-10, 16, 49, 36, -2, -9])
     end
   end
 
