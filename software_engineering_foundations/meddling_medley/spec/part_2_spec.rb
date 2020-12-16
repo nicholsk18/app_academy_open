@@ -103,7 +103,7 @@ describe "PHASE 2" do
 
     describe "compress" do
         it "should accepts a string as an argument" do
-            expect {}.to_not raise_error
+            expect { compress('aabbbbc') }.to_not raise_error
         end
 
         it "should return a compressed version of the string where streaks of consecutive letters are translated to a single appearance of the letter followed by the number of times it appears in the streak." do
