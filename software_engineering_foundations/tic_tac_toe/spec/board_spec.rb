@@ -43,31 +43,31 @@ describe "Board" do
     end
   end
   #
-  # describe "#empty?" do
-  #   it "should accept a position (array) as an arg" do
-  #     expect { board.empty?([0, 0]) }.to_not raise_error
-  #   end
-  #
-  #   context "when the specified position contains a player's mark" do
-  #     it "should return false" do
-  #       board.instance_variable_set(:grid, [['_', '_', '_'], ['_', :O, :X], ['_', :O, :X]])
-  #
-  #       expect(board.empty?([1, 1])).to eq(false)
-  #       expect(board.empty?([1, 2])).to eq(false)
-  #       expect(board.empty?([2, 2])).to eq(false)
-  #     end
-  #   end
-  #
-  #   context "when the specified position does not contains a player's mark" do
-  #     it 'should return true' do
-  #       board.instance_variable_set(:grid, [['_', '_', '_'], ['_', :O, :X], ['_', :O, :X]])
-  #
-  #       expect(board.empty?([0, 0])).to eq(true)
-  #       expect(board.empty?([0, 1])).to eq(true)
-  #       expect(board.empty?([0, 2])).to eq(true)
-  #     end
-  #   end
-  # end
+  describe "#empty?" do
+    it "should accept a position (array) as an arg" do
+      expect { board.empty?([0, 0]) }.to_not raise_error
+    end
+
+    context "when the specified position contains a player's mark" do
+      it "should return false" do
+        board.instance_variable_set(:@grid, [['_', '_', '_'], ['_', :O, :X], ['_', :O, :X]])
+
+        expect(board.empty?([1, 1])).to eq(false)
+        # expect(board.empty?([1, 2])).to eq(false)
+        # expect(board.empty?([2, 2])).to eq(false)
+      end
+    end
+
+    context "when the specified position does not contains a player's mark" do
+      it 'should return true' do
+        board.instance_variable_set(:@grid, [['_', '_', '_'], ['_', :O, :X], ['_', :O, :X]])
+
+        expect(board.empty?([0, 0])).to eq(true)
+        expect(board.empty?([0, 1])).to eq(true)
+        expect(board.empty?([0, 2])).to eq(true)
+      end
+    end
+  end
   #
   # describe "#place_mark(position, mark)" do
   #   it "should accept a position and a mark as an arg" do
