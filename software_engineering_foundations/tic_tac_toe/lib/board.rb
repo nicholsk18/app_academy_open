@@ -19,4 +19,37 @@ class Board
       @grid[position[0]][position[1]] = mark
     end
   end
+
+  def print
+    @grid.each do |row|
+      p row
+    end
+  end
+
+  def win_row?(mark)
+    @grid.each do |row|
+      if row.all? { |item| item == mark }
+        return true
+      end
+    end
+
+    false
+  end
+
+  def win_col?(mark)
+    (0...@grid.length).each do |row|
+      column = []
+      (0...@grid.length).each do |col|
+        column << @grid[col][row]
+      end
+
+      return true if column.all? { |ele| ele == mark }
+    end
+
+    false
+  end
+
+  def win_diagonal?(mark)
+
+  end
 end

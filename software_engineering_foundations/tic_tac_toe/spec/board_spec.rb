@@ -110,4 +110,113 @@ describe "Board" do
       end
     end
   end
+
+  describe "#print" do
+    it "should not accept anything" do
+      expect { board.print }.to_not raise_error
+    end
+
+    context "when there are marks on the board" do
+      it "should show marks" do
+        board.instance_variable_set(:@grid, [['_', '_', '_'], ['_', :X, '_'], [:X, :O, :X]])
+        board.print
+      end
+    end
+  end
+
+  describe "#win_row?" do
+    it "should accept a mark" do
+      expect { board.win_row?(:X) }.to_not raise_error
+    end
+
+    context "when the given mark fills the hole row" do
+      it "should return true" do
+        board.instance_variable_set(:@grid, [[:X, :X, :X], ['_', :X, '_'], [:X, :O, :X]])
+        expect(board.win_row?(:X)).to eq(true)
+
+        board.instance_variable_set(:@grid, [['_', :X, '_'], [:X, :X, :X], [:X, :O, :X]])
+        expect(board.win_row?(:X)).to eq(true)
+
+        board.instance_variable_set(:@grid, [['_', :X, '_'], [:X, '_', :X], [:O, :O, :O]])
+        expect(board.win_row?(:O)).to eq(true)
+      end
+    end
+
+    context "when the given mark does not fill the hole row" do
+      it "should return false" do
+        board.instance_variable_set(:@grid, [[:O, :O, '_'], [:O, :X, '_'], [:O, :O, :X]])
+        expect(board.win_row?(:O)).to eq(false)
+
+        board.instance_variable_set(:@grid, [['_', :X, '_'], [:X, :X, :X], [:X, :O, :X]])
+        expect(board.win_row?(:O)).to eq(false)
+
+        board.instance_variable_set(:@grid, [['_', :X, '_'], [:X, '_', :X], ['_', :X, :O]])
+        expect(board.win_row?(:O)).to eq(false)
+      end
+    end
+  end
+
+  describe "#win_col?(mark)" do
+    it "should accept a mark" do
+      expect { board.win_col?(:X) }.to_not raise_error
+    end
+
+    context "when the given mark fills all the col spaces" do
+      it "should return true" do
+        board.instance_variable_set(:@grid, [[:O, :O, '_'], [:O, :X, '_'], [:O, :O, :X]])
+        expect(board.win_col?(:O)).to eq(true)
+
+        board.instance_variable_set(:@grid, [['_', :X, '_'], [:O, :X, :X], [:X, :X, :X]])
+        expect(board.win_col?(:X)).to eq(true)
+
+        board.instance_variable_set(:@grid, [['_', :O, :X], [:X, '_', :X], ['_', :X, :X]])
+        expect(board.win_col?(:X)).to eq(true)
+      end
+    end
+
+    context "when the given mark does not fill all the col spaces" do
+      it "should return false" do
+        board.instance_variable_set(:@grid, [[:O, :O, '_'], [:O, :X, '_'], [:O, :O, :X]])
+        expect(board.win_col?(:X)).to eq(false)
+
+        board.instance_variable_set(:@grid, [['_', :X, '_'], [:O, :X, :X], [:X, :X, :X]])
+        expect(board.win_col?(:O)).to eq(false)
+
+        board.instance_variable_set(:@grid, [['_', :O, :X], [:X, '_', :X], ['_', :X, :O]])
+        expect(board.win_col?(:X)).to eq(false)
+      end
+    end
+  end
+
+  describe "#win_diagonal?" do
+    it "should accept a mark" do
+      expect { board.win_diagonal?(:X) }.to_not raise_error
+    end
+
+    context "when the mark fills all the spots diagonally" do
+      it "should return true" do
+        board.instance_variable_set(:@grid, [[:O, :O, '_'], ['_', :O, '_'], ['_', :X, :O]])
+        expect(board.win_diagonal?(:O)).to eq(true)
+
+        board.instance_variable_set(:@grid, [['_', :X, :X], [:O, :X, :O], [:X, '_', :X]])
+        expect(board.win_diagonal?(:X)).to eq(true)
+
+        board.instance_variable_set(:@grid, [['_', :O, :O], [:X, :O, :X], [:O, '_', '_']])
+        expect(board.win_diagonal?(:O)).to eq(true)
+      end
+    end
+
+    context "when the mark does not fill all the spots diagonally" do
+      it "should return false" do
+        board.instance_variable_set(:@grid, [[:O, :O, '_'], ['_', :O, '_'], ['_', :X, :O]])
+        expect(board.win_diagonal?(:X)).to eq(false)
+
+        board.instance_variable_set(:@grid, [['_', :X, :X], [:O, :X, :O], [:X, '_', :X]])
+        expect(board.win_diagonal?(:O)).to eq(false)
+
+        board.instance_variable_set(:@grid, [['_', :O, :O], [:X, :O, :X], [:O, '_', '_']])
+        expect(board.win_diagonal?(:X)).to eq(false)
+      end
+    end
+  end
 end
