@@ -220,6 +220,50 @@ describe "Board" do
     end
   end
 
+  describe "#win?" do
+    it "should accept a mark" do
+      expect { board.win?(:X) }.to_not raise_error
+    end
+
+    context "when the given mark filled any full row, column, or diagonal" do
+      it "should return true" do
+        board.instance_variable_set(:@grid, [[:X, :O, :O], [:X, :O, :X], [:X, '_', '_']])
+        expect(board.win?(:X)).to eq(true)
+
+        board.instance_variable_set(:@grid, [['_', :X, :O], [:X, :X, :O], [:X, :X, '_']])
+        expect(board.win?(:X)).to eq(true)
+
+        board.instance_variable_set(:@grid, [['_', :X, :O], [:X, :O, :O], [:O, :X, '_']])
+        expect(board.win?(:O)).to eq(true)
+
+        board.instance_variable_set(:@grid, [[:O, :X, :O], [:X, :O, '_'], [:X, :X, :O]])
+        expect(board.win?(:O)).to eq(true)
+
+        board.instance_variable_set(:@grid, [['_', :X, :O], [:X, :X, '_'], [:O, :O, :O]])
+        expect(board.win?(:O)).to eq(true)
+      end
+    end
+
+    context "when the given mark did not fill any full row, column or diagonal" do
+      it "should return false" do
+        board.instance_variable_set(:@grid, [[:X, :O, :O], [:X, :O, :X], [:X, '_', '_']])
+        expect(board.win?(:O)).to eq(false)
+
+        board.instance_variable_set(:@grid, [['_', :X, :O], [:X, :X, :O], [:X, :X, '_']])
+        expect(board.win?(:O)).to eq(false)
+
+        board.instance_variable_set(:@grid, [['_', :X, :O], [:X, :O, :O], [:O, :X, '_']])
+        expect(board.win?(:X)).to eq(false)
+
+        board.instance_variable_set(:@grid, [[:O, :X, :O], [:X, :O, '_'], [:X, :X, :O]])
+        expect(board.win?(:X)).to eq(false)
+
+        board.instance_variable_set(:@grid, [['_', :X, :O], [:X, :X, '_'], [:O, :O, :O]])
+        expect(board.win?(:X)).to eq(false)
+      end
+    end
+  end
+
   describe "#empty_positions?" do
     it "should not raise error" do
       expect { board.empty_positions? }.to_not raise_error
