@@ -219,4 +219,27 @@ describe "Board" do
       end
     end
   end
+
+  describe "#empty_positions?" do
+    it "should not raise error" do
+      expect { board.empty_positions? }.to_not raise_error
+    end
+
+    context "when there is atleast one empty position" do
+      it "should return true" do
+        board.instance_variable_set(:@grid, [['_', '_', '_'], ['_', '_', '_'], ['_', '_', '_']])
+        expect(board.empty_positions?).to eq(true)
+
+        board.instance_variable_set(:@grid, [[:X, :O, '_'], [:X, :X, :O], [:O, :O, :X]])
+        expect(board.empty_positions?).to eq(true)
+      end
+    end
+
+    context "when there are no empty positions" do
+      it "should return false" do
+        board.instance_variable_set(:@grid, [[:X, :O, :X], [:X, :X, :O], [:O, :O, :X]])
+        expect(board.empty_positions?).to eq(false)
+      end
+    end
+  end
 end

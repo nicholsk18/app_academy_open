@@ -50,6 +50,32 @@ class Board
   end
 
   def win_diagonal?(mark)
+    left_to_right = []
+    right_to_left = []
 
+    (0...@grid.length).each do |index|
+      left_to_right << @grid[index][index]
+      right_to_left << @grid[index][-1 + (-index)]
+    end
+
+    if left_to_right.all? { |ele| ele == mark }
+      return true
+    elsif right_to_left.all? { |ele| ele == mark }
+      return true
+    else
+      return false
+    end
+  end
+
+  def empty_positions?
+    @grid.each do |row|
+      row.each do |col|
+        if col == '_'
+          return true
+        end
+      end
+    end
+
+    false
   end
 end
