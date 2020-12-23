@@ -17,4 +17,30 @@ class Game
       @current_player = @player_1
     end
   end
+
+  def play
+    is_game_over = false
+
+    while !is_game_over
+      mark = @current_player.mark
+      puts "Player :" + mark.to_s + " its your turn"
+      @board.print
+      player_turn = @current_player.get_position
+
+      @board.print
+
+      if @board.empty?(player_turn)
+        @board.place_mark(player_turn, mark)
+      end
+
+      if @board.win_col?(@mark) || @board.win_row?(mark) || @board.win_diagonal?(mark)
+
+        @board.print
+        puts "Victory to :" + mark.to_s
+        is_game_over = true
+      else
+        self.switch_turn
+      end
+    end
+  end
 end

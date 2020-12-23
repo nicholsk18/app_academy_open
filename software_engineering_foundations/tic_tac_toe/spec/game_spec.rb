@@ -45,4 +45,10 @@ describe "Game" do
       expect(game.instance_variable_get(:@current_player)).to eq(player_2)
     end
   end
+
+  describe "#play" do
+    it "should not raise error" do
+      expect { game.play }.to_not raise_error
+    end
+  end
 end

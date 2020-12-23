@@ -5,7 +5,11 @@ class Board
   end
 
   def valid?(position)
-    (position[0] >= 0 && position[0] < @grid.length) && (position[1] >= 0 && position[1] < @grid.length)
+    if (position[0] >= 0 && position[0] < @grid.length) && (position[1] >= 0 && position[1] < @grid.length)
+      self.empty?(position)
+    else
+      false
+    end
   end
 
   def empty?(position)

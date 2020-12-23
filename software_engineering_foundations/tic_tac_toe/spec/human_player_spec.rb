@@ -13,7 +13,7 @@ describe "HumanPlayer" do
     end
 
     it "should set @user_mark with a mark" do
-      expect(human_player.instance_variable_get(:@user_mark)).to eq(:X)
+      expect(human_player.instance_variable_get(:@mark)).to eq(:X)
     end
   end
 
