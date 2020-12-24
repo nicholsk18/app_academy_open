@@ -3,8 +3,6 @@ require "human_player"
 require "board"
 
 describe "Game" do
-  let(:player_1) { HumanPlayer.new(:X) }
-  let(:player_2) { HumanPlayer.new(:O) }
   let(:game) { Game.new(:X, :O) }
 
   it "should have class Game defined" do
@@ -23,6 +21,12 @@ describe "Game" do
 
     it "should set @board to a new instance of Board" do
       expect(game.instance_variable_get(:@board)).to be_instance_of(Board)
+    end
+
+    it "should set @current_player with @player_1 instance" do
+      player_1 = game.instance_variable_get(:@player_1)
+      current_player = game.instance_variable_get(:@current_player)
+      expect(current_player).to eq(player_1)
     end
   end
 
@@ -49,6 +53,12 @@ describe "Game" do
   describe "#play" do
     it "should not raise error" do
       expect { game.play }.to_not raise_error
+    end
+
+    it "should accept @current_player position" do
+      current_player = game.instance_variable_get(:@current_player)
+      allow(current_player).to receive(:gets).and_return('1 1')
+      expect(current_player.get_position).to eq([1, 1])
     end
   end
 end

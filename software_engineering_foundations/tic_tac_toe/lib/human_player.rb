@@ -13,8 +13,11 @@ class HumanPlayer
     end
 
     position.map do |num|
-      # need to add error checking
-      num.to_i
+      if Integer(num)
+        num.to_i
+      else
+        raise "That was not a number"
+      end
     end
   end
 end

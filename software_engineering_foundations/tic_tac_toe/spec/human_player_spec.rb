@@ -29,7 +29,7 @@ describe "HumanPlayer" do
       expect(human_player.get_position).to eq([1, 1])
     end
 
-    it "should raise error if youing wrong format" do
+    it "should raise error if using wrong format" do
       position_1 = "1 1 1"
       position_2 = "1"
       position_3 = "one, two"

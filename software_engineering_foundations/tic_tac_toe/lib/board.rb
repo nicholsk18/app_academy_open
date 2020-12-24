@@ -5,11 +5,7 @@ class Board
   end
 
   def valid?(position)
-    if (position[0] >= 0 && position[0] < @grid.length) && (position[1] >= 0 && position[1] < @grid.length)
-      self.empty?(position)
-    else
-      false
-    end
+    (position[0] >= 0 && position[0] < @grid.length) && (position[1] >= 0 && position[1] < @grid.length)
   end
 
   def empty?(position)
@@ -17,8 +13,10 @@ class Board
   end
 
   def place_mark(position, mark)
-    if !self.valid?(position) || !self.empty?(position)
-      rasie "Invalid Mark"
+    if !self.valid?(position)
+      raise "Invalid Location"
+    elsif !self.empty?(position)
+      raise "Postion already taken"
     else
       @grid[position[0]][position[1]] = mark
     end

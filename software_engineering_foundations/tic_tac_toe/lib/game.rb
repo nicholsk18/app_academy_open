@@ -19,28 +19,27 @@ class Game
   end
 
   def play
-    is_game_over = false
+    p @current_player.get_position
+    # is_game_over = false
 
-    while !is_game_over
-      mark = @current_player.mark
-      puts "Player :" + mark.to_s + " its your turn"
-      @board.print
-      player_turn = @current_player.get_position
+    # while !is_game_over
+    #   mark = @current_player.mark
+      
+    #   @board.print
 
-      @board.print
+    #   player_turn = @current_player.get_position
 
-      if @board.empty?(player_turn)
-        @board.place_mark(player_turn, mark)
-      end
+    #   # attempt to place mark. Will raise error if not valid
+    #   @board.place_mark(player_turn, mark)
 
-      if @board.win_col?(@mark) || @board.win_row?(mark) || @board.win_diagonal?(mark)
+    #   if @board.win_col?(mark) || @board.win_row?(mark) || @board.win_diagonal?(mark)
 
-        @board.print
-        puts "Victory to :" + mark.to_s
-        is_game_over = true
-      else
-        self.switch_turn
-      end
-    end
+    #     @board.print
+    #     puts "Victory to :" + mark.to_s
+    #     is_game_over = true
+    #   else
+    #     self.switch_turn
+    #   end
+    # end
   end
 end
