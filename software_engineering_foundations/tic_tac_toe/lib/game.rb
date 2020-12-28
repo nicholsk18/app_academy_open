@@ -41,6 +41,7 @@ class Game
           self.switch_turn
         else
           puts "The game is a tie"
+          is_game_over = true
         end
       end
     end
