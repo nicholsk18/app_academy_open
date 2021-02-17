@@ -33,3 +33,10 @@ In this section I learned:
 
 ### Section Projects:
 On top of all the exercises I also build these projects to put my learning in to practice
+- [Battleship](software_engineering_foundations/battleship_project)
+- [Guessing Game](software_engineering_foundations/guessing_game_project)
+- [Hangman](software_engineering_foundations/hangman_project)
+- [Hotel Project](software_engineering_foundations/hotel_project)
+- [Mastermind Project](software_engineering_foundations/mastermind_project)
+- [Startup Project](software_engineering_foundations/startup_project)
+- [Tic-Tac-Toe](software_engineering_foundations/tic_tac_toe)
