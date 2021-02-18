@@ -623,7 +623,7 @@ Enter a command: printerino
 Sorry, that command is not recognized.
 ```
 
-You should take a moment to test all of the different commands on your board. <b>You must have a fully working Phase 1 before moving onto Phase 2. Otherwise, you are going to have a bad time.</b>
+You should take a moment to test all of the different commands on your board. **You must have a fully working Phase 1 before moving onto Phase 2. Otherwise, you are going to have a bad time.**
 
 ## Phase 2: So little time, so much todo
 In this phase of the project, we'll refactor our code to support the following features:
@@ -766,7 +766,7 @@ Now it's time for the big one! We've been following some important object orient
 Our board should no longer initialize with a single list. Instead, initialize a board to contain an empty hash. We will allow the user to create lists at runtime. This hash will eventually contain list labels as the keys and list instances as the values. A hash is a great choice here because keys are unique, much like how we'll want the user to refer to their different lists with unique labels.
 
 #### TodoBoard#get_command
-The entirety of this new feature has to do with how the user interfaces with their many lists, so our only task is to refactor this method. It is quite an interesting refactor though. For our existing commands, the user now needs to specify <b>which</b> list to apply the action to.
+The entirety of this new feature has to do with how the user interfaces with their many lists, so our only task is to refactor this method. It is quite an interesting refactor though. For our existing commands, the user now needs to specify **which** list to apply the action to.
 
 We'll leave it to you to refactor this method. Here are all of the commands you need to support (note that some of these are new):
 
