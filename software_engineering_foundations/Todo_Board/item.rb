@@ -1,5 +1,5 @@
 class Item
-  attr_reader :title
+  attr_reader :title, :done
   attr_accessor :deadline, :description
 
   def self.valid_date?(date_string)
@@ -17,10 +17,15 @@ class Item
     @title = title
     @deadline = deadline
     @description = description
+    @done = false
   end
 
   def deadline=(new_deadline)
     raise 'Invalid Date' if !Item.valid_date?(new_deadline)
     @deadline = new_deadline
+  end
+
+  def toggle
+    @done = !@done
   end
 end
