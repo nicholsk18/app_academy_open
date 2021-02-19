@@ -40,3 +40,4 @@ On top of all the exercises I also build these projects to put my learning in to
 - [Mastermind Project](software_engineering_foundations/mastermind_project)
 - [Startup Project](software_engineering_foundations/startup_project)
 - [Tic-Tac-Toe](software_engineering_foundations/tic_tac_toe)
+- [ToDo Board](software_engineering_foundations/Todo_Board)
