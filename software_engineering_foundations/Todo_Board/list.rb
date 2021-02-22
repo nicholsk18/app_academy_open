@@ -8,7 +8,9 @@ class List
   ITEM_COL_WIDTH = 20
   DEADLINE_COL_WIDTH = 10
   DESCRIPTION_COL_WIDTH = 20
-  LINE_WIDTH_FULL = LINE_WIDTH + 20
+  LINE_WIDTH_FULL = LINE_WIDTH + 15
+  CHECKMARK = "\u2713".force_encoding('utf-8') # pretty checkmark
+  XMARK = "\u2715".force_encoding('utf-8') # pretty x mark
 
   attr_accessor :label
 
@@ -47,15 +49,20 @@ class List
     @items[0]
   end
 
+  def done?(bool)
+    bool ? CHECKMARK : XMARK
+  end
+
   def print
     puts '-' * LINE_WIDTH
     puts LABEL_PADDING + self.label.upcase
     puts '-' * LINE_WIDTH
 
-    puts "#{'Index'.ljust(INDEX_COL_WIDTH)} | #{'Item'.ljust(ITEM_COL_WIDTH)} | #{'Deadline'.ljust(DEADLINE_COL_WIDTH)}"
+    puts "#{'Index'.ljust(INDEX_COL_WIDTH)} | #{'Item'.ljust(ITEM_COL_WIDTH)} | #{'Deadline'.ljust(DEADLINE_COL_WIDTH)} | #{'Done'.ljust(DEADLINE_COL_WIDTH)}"
     puts "-" * LINE_WIDTH
     @items.each_with_index do |item, i|
-      puts "#{i.to_s.ljust(INDEX_COL_WIDTH)} | #{item.title.ljust(ITEM_COL_WIDTH)} | #{item.deadline.ljust(DEADLINE_COL_WIDTH)}"
+      done = done?(item.done)
+      puts "#{i.to_s.ljust(INDEX_COL_WIDTH)} | #{item.title.ljust(ITEM_COL_WIDTH)} | #{item.deadline.ljust(DEADLINE_COL_WIDTH)} | #{done}"
     end
     puts "-" * LINE_WIDTH
   end
@@ -64,9 +71,9 @@ class List
     return nil if !self.valid_index?(index)
     item = self[index]
     puts '-' * LINE_WIDTH_FULL
-    puts "#{'Title'.ljust(ITEM_COL_WIDTH)} | #{'Deadline'.ljust(DEADLINE_COL_WIDTH)} | #{'Description'.ljust(DESCRIPTION_COL_WIDTH)}"
+    puts "#{'Title'.ljust(ITEM_COL_WIDTH)} | #{'Deadline'.ljust(DEADLINE_COL_WIDTH)} | #{'Description'.ljust(DESCRIPTION_COL_WIDTH)} | #{'Done'.ljust(DEADLINE_COL_WIDTH)}"
     puts '-' * LINE_WIDTH_FULL
-    puts "#{item.title.ljust(ITEM_COL_WIDTH)} | #{item.deadline.ljust(DEADLINE_COL_WIDTH)} | #{item.description.ljust(DESCRIPTION_COL_WIDTH)}"
+    puts "#{item.title.ljust(ITEM_COL_WIDTH)} | #{item.deadline.ljust(DEADLINE_COL_WIDTH)} | #{item.description.ljust(DESCRIPTION_COL_WIDTH)} | #{done?(item.done)}"
     puts '-' * LINE_WIDTH_FULL
   end
 
@@ -104,5 +111,15 @@ class List
     return if !self.valid_index?(index)
 
     @items[index].toggle
+  end
+
+  def remove_item(index)
+    return false if !self.valid_index?(index)
+    @items.delete_at(index)
+    true
+  end
+
+  def purge
+    @items = @items.select { |item| !item.done }
   end
 end
