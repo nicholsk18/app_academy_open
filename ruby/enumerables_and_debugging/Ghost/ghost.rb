@@ -14,11 +14,11 @@ class Ghost
   end
 
   def previous_player
-
+    @players.last
   end
 
   def next_player!
-
+    @players.rotate!(1)
   end
 
   def take_turn(player)
@@ -30,6 +30,10 @@ class Ghost
   end
 
   def play_round
+    puts self.current_player
+    puts self.previous_player
+    puts self.next_player!
+    puts self.current_player
 
   end
 end
