@@ -54,4 +54,43 @@ class Array
 
     flat
   end
+
+  def my_zip(*args)
+    zipped = []
+    (0...self.length).each do |index|
+      temp = [self[index]]
+      (0...args.length).each do |args_index|
+        temp << args[args_index][index]
+      end
+      zipped << temp
+    end
+    p zipped
+  end
+
+  def my_rotate(by = 1)
+    if by > self.length
+      by = by % self.length
+    end
+
+    self[by...self.length] + self[0...by]
+  end
+
+  def my_join(with = "")
+    str = ''
+
+    self.length.times do |i|
+      str += self[i]
+      str += with unless self[i] == self[-1]
+    end
+
+    str
+  end
+
+  def my_reverse
+    reversed = []
+    self.my_each do |item|
+      reversed = [item] + reversed
+    end
+    reversed
+  end
 end
